@@ -6,6 +6,8 @@
 
 package Vista;
 
+import javax.swing.JInternalFrame;
+
 /**
  *
  * @author JuanmaPC
@@ -26,7 +28,58 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenuClientes = new javax.swing.JMenu();
+        jMenuItemAgregar = new javax.swing.JMenuItem();
+        jMenuItemBuscar = new javax.swing.JMenuItem();
+        jMenuItemBorrar = new javax.swing.JMenuItem();
+        jMenuDirectorio = new javax.swing.JMenu();
+        jMenuCiudades = new javax.swing.JMenu();
+        jMenuSalir = new javax.swing.JMenu();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jMenuClientes.setText("Clientes");
+
+        jMenuItemAgregar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMenuItemAgregar.setText("Agregar Cliente");
+        jMenuItemAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAgregarActionPerformed(evt);
+            }
+        });
+        jMenuClientes.add(jMenuItemAgregar);
+
+        jMenuItemBuscar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMenuItemBuscar.setText("Buscar Cliente");
+        jMenuItemBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemBuscarActionPerformed(evt);
+            }
+        });
+        jMenuClientes.add(jMenuItemBuscar);
+
+        jMenuItemBorrar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMenuItemBorrar.setText("Borrar Cliente");
+        jMenuItemBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemBorrarActionPerformed(evt);
+            }
+        });
+        jMenuClientes.add(jMenuItemBorrar);
+
+        jMenuBar1.add(jMenuClientes);
+
+        jMenuDirectorio.setText("Directorio");
+        jMenuBar1.add(jMenuDirectorio);
+
+        jMenuCiudades.setText("Ciudades");
+        jMenuBar1.add(jMenuCiudades);
+
+        jMenuSalir.setText("Salir");
+        jMenuBar1.add(jMenuSalir);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -36,11 +89,29 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 398, Short.MAX_VALUE)
+            .addGap(0, 374, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuItemBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemBuscarActionPerformed
+
+    private void jMenuItemBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBorrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemBorrarActionPerformed
+
+    private void jMenuItemAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgregarActionPerformed
+               
+        JInternalFrame agregarFrame = new JInternalFrame (
+            "Agregar cliente", true, true, true, true
+        );
+        agregarFrame.setSize(400, 300);
+        this.add(agregarFrame);      
+        agregarFrame.setVisible(true);
+    }//GEN-LAST:event_jMenuItemAgregarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,6 +149,14 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenuCiudades;
+    private javax.swing.JMenu jMenuClientes;
+    private javax.swing.JMenu jMenuDirectorio;
+    private javax.swing.JMenuItem jMenuItemAgregar;
+    private javax.swing.JMenuItem jMenuItemBorrar;
+    private javax.swing.JMenuItem jMenuItemBuscar;
+    private javax.swing.JMenu jMenuSalir;
     // End of variables declaration//GEN-END:variables
 
 }
