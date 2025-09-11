@@ -7,6 +7,9 @@
 package Vista;
 
 import javax.swing.JInternalFrame;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
 /**
  *
@@ -104,13 +107,22 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemBorrarActionPerformed
 
     private void jMenuItemAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgregarActionPerformed
-               
-        JInternalFrame agregarFrame = new JInternalFrame (
-            "Agregar cliente", true, true, true, true
-        );
-        agregarFrame.setSize(400, 300);
-        this.add(agregarFrame);      
+        
+        AgregarContactoFrame agregarFrame = new AgregarContactoFrame();
+        this.add(agregarFrame);
         agregarFrame.setVisible(true);
+//        JInternalFrame agregarFrame = new JInternalFrame (
+//            "Agregar cliente", true, true, true, true
+//        );
+//        agregarFrame.setSize(400, 300);
+//        agregarFrame.setLayout(new GridLayout(5, 2, 5, 5));
+//        
+////        JTextField txtName, txtAge, txtCity, txtId;
+//        
+//        
+//        this.add(agregarFrame);      
+//        
+
     }//GEN-LAST:event_jMenuItemAgregarActionPerformed
 
     /**
