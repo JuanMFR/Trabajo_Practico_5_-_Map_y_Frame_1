@@ -4,19 +4,41 @@
  */
 package Vista;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
  * @author pedrodenaro
+ * 
+ * TODO:
+ *      - Create instance of customer with input values
+ *      - Add City comboBox functionality
+ *      - Check difference between MouseListener and ActionListener
+ * 
  */
 public class AgregarContactoFrame extends javax.swing.JInternalFrame {
 
+    List<JTextField> textFields;
+    List<JLabel> labels;    
+    
     /**
      * Creates new form AgregarContactoJFrame
      */
     public AgregarContactoFrame() {
         initComponents();
+        this.textFields = new ArrayList<JTextField>();
+
+//        // Debe haber una forma de loopear sobre los child items, y quedarnos con los TextField usand isInstance
+        textFields.add(TextFieldDNI);
+        textFields.add(TextFieldNombre);
+        textFields.add(TextFieldApellido);
+        textFields.add(TextFieldDomicilio);
+        textFields.add(TextFieldTelefono);        
+        
     }
 
     /**
@@ -31,25 +53,46 @@ public class AgregarContactoFrame extends javax.swing.JInternalFrame {
         jOptionPaneErrorDNI = new javax.swing.JOptionPane();
         jPanel1 = new javax.swing.JPanel();
         TextFieldDNI = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        LabelDNI = new javax.swing.JLabel();
+        LabelNombre = new javax.swing.JLabel();
         TextFieldNombre = new javax.swing.JTextField();
+        LabelApellido = new javax.swing.JLabel();
+        TextFieldApellido = new javax.swing.JTextField();
+        LabelCiudad = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        LabelDomicilio = new javax.swing.JLabel();
+        TextFieldDomicilio = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        LabelTelefono = new javax.swing.JLabel();
+        TextFieldTelefono = new javax.swing.JTextField();
+        ButtonGuardarCliente = new javax.swing.JButton();
+        ButtonSalir = new javax.swing.JButton();
 
         jOptionPaneErrorDNI.setMessage("Debe ingresar valor numérico para DNI");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        TextFieldDNI.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextFieldDNIActionPerformed(evt);
-            }
-        });
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel2.setText("DNI:");
+        TextFieldDNI.setName("DNI"); // NOI18N
 
-        jLabel3.setText("Nombre:");
+        LabelDNI.setText("DNI:");
+
+        LabelNombre.setText("Nombre:");
+
+        TextFieldNombre.setName("Nombre"); // NOI18N
+
+        LabelApellido.setText("Apellido");
+
+        TextFieldApellido.setName("Apellido"); // NOI18N
+
+        LabelCiudad.setText("Ciudad");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        LabelDomicilio.setText("Domicilio");
+
+        TextFieldDomicilio.setName("Domicilio"); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -58,39 +101,51 @@ public class AgregarContactoFrame extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2))
-                .addGap(36, 36, 36)
+                    .addComponent(LabelNombre)
+                    .addComponent(LabelDNI)
+                    .addComponent(LabelApellido)
+                    .addComponent(LabelCiudad)
+                    .addComponent(LabelDomicilio))
+                .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(TextFieldDNI, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                    .addComponent(TextFieldNombre))
-                .addContainerGap(125, Short.MAX_VALUE))
+                    .addComponent(TextFieldDNI)
+                    .addComponent(TextFieldNombre)
+                    .addComponent(TextFieldApellido)
+                    .addComponent(jComboBox1, 0, 166, Short.MAX_VALUE)
+                    .addComponent(TextFieldDomicilio))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TextFieldDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                    .addComponent(LabelNombre)
                     .addComponent(TextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LabelApellido)
+                    .addComponent(TextFieldApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LabelCiudad)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LabelDomicilio)
+                    .addComponent(TextFieldDomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
-        jButton1.setText("Agregar");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
-            }
-        });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        LabelTelefono.setText("Telefono");
+
+        TextFieldTelefono.setName("Telefono"); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -98,16 +153,39 @@ public class AgregarContactoFrame extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(LabelTelefono)
+                .addGap(37, 37, 37)
+                .addComponent(TextFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(148, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(34, 34, 34))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LabelTelefono)
+                    .addComponent(TextFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
+
+        ButtonGuardarCliente.setText("Guardar");
+        ButtonGuardarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ButtonGuardarClienteMouseClicked(evt);
+            }
+        });
+        ButtonGuardarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonGuardarClienteActionPerformed(evt);
+            }
+        });
+
+        ButtonSalir.setText("Salir");
+        ButtonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -117,47 +195,71 @@ public class AgregarContactoFrame extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(ButtonGuardarCliente)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ButtonSalir)
+                        .addGap(65, 65, 65)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ButtonGuardarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ButtonSalir))
+                .addGap(18, 18, 18))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TextFieldDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldDNIActionPerformed
+    private void ButtonGuardarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonGuardarClienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextFieldDNIActionPerformed
+    }//GEN-LAST:event_ButtonGuardarClienteActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        // TODO add your handling code here:
-        String textValueDNI = this.TextFieldDNI.getText();
-        try {
-            int DNI = Integer.parseInt(textValueDNI);
-            System.out.println(DNI);
-        } catch (NumberFormatException e) {
-//            System.out.println("Forro");
-//            this.jOptionPaneErrorDNI.getMessage();
-        // Display an error pop-up
-        JOptionPane.showMessageDialog(this,
-                                      "Debe ingresar un valor numérico para el DNI.",
-                                      "Error",
-                                      JOptionPane.ERROR_MESSAGE);
-        }
-        this.TextFieldDNI.setText("");
+    private void ButtonGuardarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtonGuardarClienteMouseClicked
+        // TODO add your handling code here:       
         
-    }//GEN-LAST:event_jButton1MouseClicked
+        for (int i=0; i<textFields.size(); i++) {
+            JTextField textField = textFields.get(i);
+            if (textField.getText().equals("")) {
+                System.out.println("Nada por aquí");
+                JOptionPane.showMessageDialog(
+                    this,
+                    "No ingresó ningún valor para el campo " + textField.getName(),
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+                break;
+            }
+            if (textField.getName().equals("DNI") || 
+                    textField.getName().equals("Telefono")) {
+                String textValue = textField.getText();
+                try {
+                    long longValue = Long.parseLong(textValue); // Debemos usar esto para el contacto                
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(
+                            this,
+                            "Debe ingresar un valor numérico para " + textField.getName(),
+                            "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                    textField.setText("");
+                }
+        //            this.jOptionPaneErrorDNI.getMessage();
+            }                       
+        }
+    }//GEN-LAST:event_ButtonGuardarClienteMouseClicked
+
+    private void ButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalirActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_ButtonSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,11 +298,20 @@ public class AgregarContactoFrame extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ButtonGuardarCliente;
+    private javax.swing.JButton ButtonSalir;
+    private javax.swing.JLabel LabelApellido;
+    private javax.swing.JLabel LabelCiudad;
+    private javax.swing.JLabel LabelDNI;
+    private javax.swing.JLabel LabelDomicilio;
+    private javax.swing.JLabel LabelNombre;
+    private javax.swing.JLabel LabelTelefono;
+    private javax.swing.JTextField TextFieldApellido;
     private javax.swing.JTextField TextFieldDNI;
+    private javax.swing.JTextField TextFieldDomicilio;
     private javax.swing.JTextField TextFieldNombre;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JTextField TextFieldTelefono;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JOptionPane jOptionPaneErrorDNI;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

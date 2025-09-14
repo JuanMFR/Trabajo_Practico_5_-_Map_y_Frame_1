@@ -92,7 +92,7 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 374, Short.MAX_VALUE)
+            .addGap(0, 546, Short.MAX_VALUE)
         );
 
         pack();
@@ -110,19 +110,7 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
         
         AgregarContactoFrame agregarFrame = new AgregarContactoFrame();
         this.add(agregarFrame);
-        agregarFrame.setVisible(true);
-//        JInternalFrame agregarFrame = new JInternalFrame (
-//            "Agregar cliente", true, true, true, true
-//        );
-//        agregarFrame.setSize(400, 300);
-//        agregarFrame.setLayout(new GridLayout(5, 2, 5, 5));
-//        
-////        JTextField txtName, txtAge, txtCity, txtId;
-//        
-//        
-//        this.add(agregarFrame);      
-//        
-
+        agregarFrame.setVisible(true);      
     }//GEN-LAST:event_jMenuItemAgregarActionPerformed
 
     /**
