@@ -35,20 +35,35 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jEscritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuClientes = new javax.swing.JMenu();
         jMenuItemAgregar = new javax.swing.JMenuItem();
         jMenuItemBuscar = new javax.swing.JMenuItem();
         jMenuItemBorrar = new javax.swing.JMenuItem();
         jMenuDirectorio = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenuCiudades = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenuSalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        javax.swing.GroupLayout jEscritorioLayout = new javax.swing.GroupLayout(jEscritorio);
+        jEscritorio.setLayout(jEscritorioLayout);
+        jEscritorioLayout.setHorizontalGroup(
+            jEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 550, Short.MAX_VALUE)
+        );
+        jEscritorioLayout.setVerticalGroup(
+            jEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 546, Short.MAX_VALUE)
+        );
+
         jMenuClientes.setText("Clientes");
 
-        jMenuItemAgregar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMenuItemAgregar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         jMenuItemAgregar.setText("Agregar Cliente");
         jMenuItemAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,7 +72,7 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
         });
         jMenuClientes.add(jMenuItemAgregar);
 
-        jMenuItemBuscar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMenuItemBuscar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         jMenuItemBuscar.setText("Buscar Cliente");
         jMenuItemBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,7 +81,7 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
         });
         jMenuClientes.add(jMenuItemBuscar);
 
-        jMenuItemBorrar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMenuItemBorrar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         jMenuItemBorrar.setText("Borrar Cliente");
         jMenuItemBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,9 +93,25 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenuClientes);
 
         jMenuDirectorio.setText("Directorio");
+
+        jMenuItem1.setText("Buscar Cliente por ciudad");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenuDirectorio.add(jMenuItem1);
+
+        jMenuItem2.setText("Buscar Teléfono por apellido");
+        jMenuDirectorio.add(jMenuItem2);
+
         jMenuBar1.add(jMenuDirectorio);
 
         jMenuCiudades.setText("Ciudades");
+
+        jMenuItem3.setText("Agregar Ciudad");
+        jMenuCiudades.add(jMenuItem3);
+
         jMenuBar1.add(jMenuCiudades);
 
         jMenuSalir.setText("Salir");
@@ -92,11 +123,11 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 550, Short.MAX_VALUE)
+            .addComponent(jEscritorio)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 546, Short.MAX_VALUE)
+            .addComponent(jEscritorio)
         );
 
         pack();
@@ -108,17 +139,24 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
 
     private void jMenuItemBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBorrarActionPerformed
         // TODO add your handling code here:
+        jEscritorio.removeAll();
+        jEscritorio.repaint();
         frmBorrarContacto borrarFrame = new frmBorrarContacto(directorio);
-        this.add(borrarFrame);
+        jEscritorio.add(borrarFrame);
         borrarFrame.setVisible(true);                      
     }//GEN-LAST:event_jMenuItemBorrarActionPerformed
 
     private void jMenuItemAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgregarActionPerformed
-        
+        jEscritorio.removeAll();
+        jEscritorio.repaint();
         frmAgregarContacto agregarFrame = new frmAgregarContacto(directorio);
-        this.add(agregarFrame);
+        jEscritorio.add(agregarFrame);
         agregarFrame.setVisible(true);      
     }//GEN-LAST:event_jMenuItemAgregarActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,10 +194,14 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane jEscritorio;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCiudades;
     private javax.swing.JMenu jMenuClientes;
     private javax.swing.JMenu jMenuDirectorio;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItemAgregar;
     private javax.swing.JMenuItem jMenuItemBorrar;
     private javax.swing.JMenuItem jMenuItemBuscar;
