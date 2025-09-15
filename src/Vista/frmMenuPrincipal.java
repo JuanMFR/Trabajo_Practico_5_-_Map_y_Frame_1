@@ -10,6 +10,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import Funciones.Directorio;
 
 /**
  *
@@ -17,9 +18,12 @@ import java.awt.event.*;
  */
 public class frmMenuPrincipal extends javax.swing.JFrame {
 
+    private Directorio directorio;
+    
     /** Creates new form frmMenuPrincipal */
     public frmMenuPrincipal() {
         initComponents();
+        directorio = new Directorio();
     }
 
     /** This method is called from within the constructor to
@@ -104,11 +108,14 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
 
     private void jMenuItemBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBorrarActionPerformed
         // TODO add your handling code here:
+        frmBorrarContacto borrarFrame = new frmBorrarContacto(directorio);
+        this.add(borrarFrame);
+        borrarFrame.setVisible(true);                      
     }//GEN-LAST:event_jMenuItemBorrarActionPerformed
 
     private void jMenuItemAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgregarActionPerformed
         
-        AgregarContactoFrame agregarFrame = new AgregarContactoFrame();
+        frmAgregarContacto agregarFrame = new frmAgregarContacto(directorio);
         this.add(agregarFrame);
         agregarFrame.setVisible(true);      
     }//GEN-LAST:event_jMenuItemAgregarActionPerformed

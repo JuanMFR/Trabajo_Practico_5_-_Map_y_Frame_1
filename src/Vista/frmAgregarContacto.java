@@ -4,6 +4,8 @@
  */
 package Vista;
 
+import Funciones.Contacto;
+import Funciones.Directorio;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JLabel;
@@ -20,16 +22,18 @@ import javax.swing.JTextField;
  *      - Check difference between MouseListener and ActionListener
  * 
  */
-public class AgregarContactoFrame extends javax.swing.JInternalFrame {
+public class frmAgregarContacto extends javax.swing.JInternalFrame {
 
-    List<JTextField> textFields;
-    List<JLabel> labels;    
+    private List<JTextField> textFields;
+    private List<JLabel> labels;    
+    private Directorio directorio;
     
     /**
      * Creates new form AgregarContactoJFrame
      */
-    public AgregarContactoFrame() {
+    public frmAgregarContacto(Directorio directorio) {
         initComponents();
+        this.directorio = directorio;
         this.textFields = new ArrayList<JTextField>();
 
 //        // Debe haber una forma de loopear sobre los child items, y quedarnos con los TextField usand isInstance
@@ -39,6 +43,10 @@ public class AgregarContactoFrame extends javax.swing.JInternalFrame {
         textFields.add(TextFieldDomicilio);
         textFields.add(TextFieldTelefono);        
         
+    }
+
+    private frmAgregarContacto() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
@@ -224,18 +232,23 @@ public class AgregarContactoFrame extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ButtonGuardarClienteActionPerformed
 
+    private void clearAllTextFields() {
+        for (JTextField textField : textFields) {
+            textField.setText("");
+        }
+    }
+    
     private void ButtonGuardarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtonGuardarClienteMouseClicked
-        // TODO add your handling code here:       
-        
-        for (int i=0; i<textFields.size(); i++) {
-            JTextField textField = textFields.get(i);
+
+        boolean saveOk = true;
+        for (JTextField textField: textFields) {
             if (textField.getText().equals("")) {
-                System.out.println("Nada por aquí");
                 JOptionPane.showMessageDialog(
                     this,
                     "No ingresó ningún valor para el campo " + textField.getName(),
                     "Error",
                     JOptionPane.ERROR_MESSAGE);
+                saveOk = false;
                 break;
             }
             if (textField.getName().equals("DNI") || 
@@ -250,10 +263,26 @@ public class AgregarContactoFrame extends javax.swing.JInternalFrame {
                             "Error",
                             JOptionPane.ERROR_MESSAGE);
                     textField.setText("");
+                    saveOk = false;
                 }
-        //            this.jOptionPaneErrorDNI.getMessage();
             }                       
         }
+        if (saveOk) {
+            // get text inputs
+            long DNI = Long.parseLong(TextFieldDNI.getText());
+            String nombre = TextFieldNombre.getText();
+            String apellido = TextFieldApellido.getText();
+            String ciudad = "";
+            String domicilio = TextFieldDomicilio.getText();
+            long telefono = Long.parseLong(TextFieldTelefono.getText());
+            // create contact and add to directorio
+            Contacto contacto = new Contacto(DNI, nombre, apellido, ciudad, domicilio);
+            directorio.agregarContacto(telefono, contacto);            
+            // show msg and clear text inputs
+            JOptionPane.showMessageDialog(this, "Client added successfully!");
+            clearAllTextFields();
+        }
+        
     }//GEN-LAST:event_ButtonGuardarClienteMouseClicked
 
     private void ButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalirActionPerformed
@@ -278,21 +307,27 @@ public class AgregarContactoFrame extends javax.swing.JInternalFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AgregarContactoFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmAgregarContacto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AgregarContactoFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmAgregarContacto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AgregarContactoFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmAgregarContacto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AgregarContactoFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmAgregarContacto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AgregarContactoFrame().setVisible(true);
+                new frmAgregarContacto().setVisible(true);
             }
         });
     }
