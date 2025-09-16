@@ -30,6 +30,17 @@ public class Directorio {
         }
         return null;
     }
+
+    public Map.Entry buscarContactoPorDNI(long buscarDNI){
+        Map.Entry<Long, Contacto> foundEntry = null;
+        for (Map.Entry<Long, Contacto> entry : telefono_contactos.entrySet()) {
+            if (entry.getValue().getDNI() == buscarDNI) {
+                foundEntry = entry;
+                break;
+            }
+        }                    
+        return foundEntry;
+    }   
     
     public Set<Long> buscarTelefono(String apellido){
         Set<Long> telefonosEncontrados = new HashSet<>();
