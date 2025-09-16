@@ -8,6 +8,8 @@ import Funciones.Contacto;
 import Funciones.Directorio;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -32,9 +34,10 @@ public class frmAgregarContacto extends javax.swing.JInternalFrame {
      * Creates new form AgregarContactoJFrame
      */
     public frmAgregarContacto(Directorio directorio) {
-        initComponents();
         this.directorio = directorio;
         this.textFields = new ArrayList<JTextField>();
+        initComponents();
+        llenarCiudades();
 
 //        // Debe haber una forma de loopear sobre los child items, y quedarnos con los TextField usand isInstance
         textFields.add(TextFieldDNI);
@@ -43,6 +46,14 @@ public class frmAgregarContacto extends javax.swing.JInternalFrame {
         textFields.add(TextFieldDomicilio);
         textFields.add(TextFieldTelefono);        
         
+    }
+    
+    private void llenarCiudades(){
+        jComboCiudades.removeAllItems();
+        Set<String> ciudades = directorio.getCiudadesDisponibles();
+        for (String ciudad : ciudades) {
+            jComboCiudades.addItem(ciudad);
+        }
     }
 
     private frmAgregarContacto() {
@@ -67,7 +78,7 @@ public class frmAgregarContacto extends javax.swing.JInternalFrame {
         LabelApellido = new javax.swing.JLabel();
         TextFieldApellido = new javax.swing.JTextField();
         LabelCiudad = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboCiudades = new javax.swing.JComboBox<>();
         LabelDomicilio = new javax.swing.JLabel();
         TextFieldDomicilio = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
@@ -78,7 +89,7 @@ public class frmAgregarContacto extends javax.swing.JInternalFrame {
 
         jOptionPaneErrorDNI.setMessage("Debe ingresar valor numérico para DNI");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -96,7 +107,12 @@ public class frmAgregarContacto extends javax.swing.JInternalFrame {
 
         LabelCiudad.setText("Ciudad");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboCiudades.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboCiudades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboCiudadesActionPerformed(evt);
+            }
+        });
 
         LabelDomicilio.setText("Domicilio");
 
@@ -119,7 +135,7 @@ public class frmAgregarContacto extends javax.swing.JInternalFrame {
                     .addComponent(TextFieldDNI)
                     .addComponent(TextFieldNombre)
                     .addComponent(TextFieldApellido)
-                    .addComponent(jComboBox1, 0, 166, Short.MAX_VALUE)
+                    .addComponent(jComboCiudades, 0, 166, Short.MAX_VALUE)
                     .addComponent(TextFieldDomicilio))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -141,7 +157,7 @@ public class frmAgregarContacto extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LabelCiudad)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboCiudades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LabelDomicilio)
@@ -272,7 +288,7 @@ public class frmAgregarContacto extends javax.swing.JInternalFrame {
             long DNI = Long.parseLong(TextFieldDNI.getText());
             String nombre = TextFieldNombre.getText();
             String apellido = TextFieldApellido.getText();
-            String ciudad = "";
+            String ciudad = (String) jComboCiudades.getSelectedItem();
             String domicilio = TextFieldDomicilio.getText();
             long telefono = Long.parseLong(TextFieldTelefono.getText());
             // create contact and add to directorio
@@ -289,6 +305,10 @@ public class frmAgregarContacto extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_ButtonSalirActionPerformed
+
+    private void jComboCiudadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboCiudadesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboCiudadesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -346,7 +366,7 @@ public class frmAgregarContacto extends javax.swing.JInternalFrame {
     private javax.swing.JTextField TextFieldDomicilio;
     private javax.swing.JTextField TextFieldNombre;
     private javax.swing.JTextField TextFieldTelefono;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboCiudades;
     private javax.swing.JOptionPane jOptionPaneErrorDNI;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

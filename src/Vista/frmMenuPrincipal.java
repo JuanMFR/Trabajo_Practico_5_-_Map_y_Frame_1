@@ -103,6 +103,11 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
         jMenuDirectorio.add(jMenuItem1);
 
         jMenuItem2.setText("Buscar Teléfono por apellido");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenuDirectorio.add(jMenuItem2);
 
         jMenuBar1.add(jMenuDirectorio);
@@ -110,6 +115,11 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
         jMenuCiudades.setText("Ciudades");
 
         jMenuItem3.setText("Agregar Ciudad");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenuCiudades.add(jMenuItem3);
 
         jMenuBar1.add(jMenuCiudades);
@@ -134,11 +144,11 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBuscarActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jMenuItemBuscarActionPerformed
 
     private void jMenuItemBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBorrarActionPerformed
-        // TODO add your handling code here:
+
         jEscritorio.removeAll();
         jEscritorio.repaint();
         frmBorrarContacto borrarFrame = new frmBorrarContacto(directorio);
@@ -155,8 +165,19 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemAgregarActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+        frmBuscarClienteCiudad ventanaCiudad = new frmBuscarClienteCiudad(directorio);
+        ventanaCiudad.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        frmAgregarCiudad ventanaCiudad = new frmAgregarCiudad(directorio);
+        ventanaCiudad.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        frmBuscarClienteApellido ventanaApellido = new frmBuscarClienteApellido(directorio);
+        ventanaApellido.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
