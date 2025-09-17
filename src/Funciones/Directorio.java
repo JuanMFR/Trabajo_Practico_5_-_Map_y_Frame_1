@@ -16,7 +16,7 @@ public class Directorio {
     
     private TreeMap<Long, Contacto> telefono_contactos = new TreeMap<>();
     
-    public TreeMap<Long, Contacto> getTelefono_contactos() {
+    public TreeMap<Long, Contacto> getTelefonoContactos() {
         return telefono_contactos;
     }
     
