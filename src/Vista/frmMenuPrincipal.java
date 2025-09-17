@@ -145,6 +145,12 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
 
     private void jMenuItemBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBuscarActionPerformed
 
+        // TODO add your handling code here:
+        jEscritorio.removeAll();
+        jEscritorio.repaint();
+        frmBuscarCliente buscarFrame = new frmBuscarCliente(directorio);
+        jEscritorio.add(buscarFrame);
+        buscarFrame.setVisible(true);
     }//GEN-LAST:event_jMenuItemBuscarActionPerformed
 
     private void jMenuItemBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBorrarActionPerformed
